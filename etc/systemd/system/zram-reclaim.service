@@ -1,0 +1,12 @@
+[Unit]
+Description=Force le swap des pages inactives vers zram
+After=zramswap.service
+Requires=zramswap.service
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/zram-reclaim.sh
+Restart=always
+RestartSec=5
+Nice=10
+[Install]
+WantedBy=multi-user.target
